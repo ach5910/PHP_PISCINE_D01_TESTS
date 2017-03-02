@@ -44,16 +44,16 @@ class Test_ex02(unittest.TestCase):
 
 class Test_ex03(unittest.TestCase):
 	def test_ex03_0(self):
-		proc = Popen("php test_0_ex03.php 'Hello   World AAA'", shell=True, stdout=PIPE, stdin=PIPE)
+		proc = Popen("php test_ex03.php 'Hello   World AAA'", shell=True, stdout=PIPE, stdin=PIPE)
 		re = proc.stdout.read()
 		# self.assertEqual("Array\n(\n    [0] => AAA\n    [1] => Hello\n    [2] => World\n)\n", re)
 		self.assertTrue(("#!/usr/bin/php\nArray\n(\n    [0] => AAA\n    [1] => Hello\n    [2] => World\n)\n" == re) or (re == "Array\n(\n    [0] => AAA\n    [1] => Hello\n    [2] => World\n)\n"), re)
 
 	def test_ex03_1(self):
-		proc = Popen("php test_0_ex03.php 'aa AA hello   World AAA '", shell=True, stdout=PIPE, stdin=PIPE)
+		proc = Popen("php test_ex03.php 'aa AA hello   World AAA '", shell=True, stdout=PIPE, stdin=PIPE)
 		re = proc.stdout.read()
 		# self.assertEqual("Array\n(\n    [0] => \n    [1] => \n    [2] => AA\n    [3] => AAA\n    [4] => World\n    [5] => aa\n    [6] => hello\n)\n", re)
-		self.assertTrue(("#!/usr/bin/php\nArray\n(\n    [0] => \n    [1] => \n    [2] => AA\n    [3] => AAA\n    [4] => World\n    [5] => aa\n    [6] => hello\n)\n" == re) or (re == "Array\n(\n    [0] => \n    [1] => \n    [2] => AA\n    [3] => AAA\n    [4] => World\n    [5] => aa\n    [6] => hello\n)\n"), re)
+		self.assertTrue(("#!/usr/bin/php\nArray\n(\n    [0] => AA\n    [1] => AAA\n    [2] => World\n    [3] => aa\n    [4] => hello\n)\n" == re) or (re == "Array\n(\n    [0] => AA\n    [1] => AAA\n    [2] => World\n    [3] => aa\n    [4] => hello\n)\n"), re)
 
 class Test_ex04(unittest.TestCase):
 	def test_00(self):
@@ -145,7 +145,7 @@ class Test_ex09(unittest.TestCase):
 		self.assertEqual("AhAhAh\ntoto\ntutu\nXXX\n1948372\n4234\n##\n_hop\n", re)
 
 	def test_ex09_01(self):
-		proc = Popen("php ex09/ssap2.php 42 _Tot0 a4 Cb 'a#' _toto az 5v", shell=True, stdout=PIPE)
+		proc = Popen("php ex09/ssap2.php 42 _TOT0 a4 Cb 'a#' _toto az 5v", shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		self.assertEqual("az\na4\na#\nCb\n42\n5v\n_toto\n_TOT0\n", re)
 
