@@ -26,21 +26,21 @@ class Test_ex02(unittest.TestCase):
 		proc.stdin.write("34")
 		proc.stdin.close()
 		re = proc.stdout.read()
-		self.assertEqual(re, "The number 34 is even\n")
+		self.assertTrue((re == "The number 34 is even\n") or (re == "Enter a number: 34\nThe number 34 is even\n") or (re == "\nEnter a number: 34\nThe number 34 is even\n"), re)
 
 	def test_ex02_1(self):
 		proc = Popen("php ex02/oddeven.php", shell=True, stdout=PIPE, stdin=PIPE)
 		proc.stdin.write("33")
 		proc.stdin.close()
 		re = proc.stdout.read()
-		self.assertEqual(re, "The number 33 is odd\n")
+		self.assertEqual((re == "The number 33 is odd\n") or (re == "Enter a number: 33\nThe number 33 is odd\n") or (re == "\nEnter a number: 33\nThe number 33 is odd\n"), re)
 
 	def test_ex02_2(self):
 		proc = Popen("php ex02/oddeven.php", shell=True, stdout=PIPE, stdin=PIPE)
 		proc.stdin.write("a")
 		proc.stdin.close()
 		re = proc.stdout.read()
-		self.assertEqual(re, "'a' is not a number\n")
+		self.assertTrue((re == "'a' is not a number\n") or (re == "Enter a number: a\n'a' is not a number\n") or (re == "\nEnter a number: a\n'a' is not a number\n"), re)
 
 class Test_ex03(unittest.TestCase):
 	def test_ex03_0(self):
